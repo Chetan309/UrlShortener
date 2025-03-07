@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>URL Shortener</title>
+</head>
+<body class="bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+    <h1 class="text-2xl font-bold text-center mb-4">URL Shortener</h1>
+    <form action="/shortUrls" method="POST" class="flex flex-col space-y-4">
+      <label for="fullUrl" class="sr-only">Url</label>
+      <input required placeholder="Enter URL" type="url" name="fullUrl" id="fullUrl" class="border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <button type="submit" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 rounded-md hover:opacity-90 transition">Shorten</button>
+    </form>
+    
+    <table class="w-full mt-6 border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border p-2">Full URL</th>
+          <th class="border p-2">Short URL</th>
+          <th class="border p-2">Clicks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shortUrls.forEach(shortUrl => { %>
+          <tr class="text-center">
+            <td class="border p-2"><a href="<%= shortUrl.full %>" class="text-blue-500 hover:underline"><%= shortUrl.full %></a></td>
+            <td class="border p-2"><a href="<%= shortUrl.short %>" class="text-blue-500 hover:underline"><%= shortUrl.short %></a></td>
+            <td class="border p-2"><%= shortUrl.clicks %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
