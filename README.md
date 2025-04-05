@@ -1,4 +1,4 @@
-# URL Shortener
+# URL Shortener 
 
 A simple URL shortener built using **Node.js, Express, MongoDB, and EJS**. This application allows users to shorten long URLs and track the number of times they have been clicked.
 
